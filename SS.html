@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BMI APP</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="container">
+      <nav>
+        <ul>
+          <li><a href="BB.html">BMI Buddy</a></li>
+          <li><a href="CC.html">Calorie Compass</a></li>
+          <li><a href="WW.html">Water Watcher</a></li>
+          <li><a href="SS.html">Steps Sankhya</a></li>
+        </ul>
+      </nav>
+      <hgroup>
+        <h1>Steps Sankhya</h1>
+        <p>Calculate the STEPS</p>
+      </hgroup>
+    </header>
+    <main class="container">
+      <section>
+        <p>Set your Total Goals, Timeline and current savings to see how much you need to save each month</p>
+        <input placeholder="Total Goal" id="Total" type="number" required/>
+        <input placeholder="# Number of Months" id="Months" type="number" required/>
+        <input placeholder="Currently Saved" id="Current" type="number" required/>
+        <button type="button" id="calculateBtn">How much do I need to Save?</button>
+      </section>
+      <section>
+        <p id="results"></p>
+      </section>
+      <section>
+        <p id="result"></p>
+      </section>
+      <script id="ng2">
+        const inputElement_calBtn = document.getElementById("calculateBtn");
+        
+        const inputElement_pTag = document.getElementById("results");
+        
+        function getTotalSavingsValue(Total,Months,Current){
+          const remaining = Total - Current;
+          const requiredSavingsPerMonth = remaining / Months;
+          return `You need to Save Rs:${requiredSavingsPerMonth}`;
+        }
+
+        function handleButtonClick(){
+
+        const inputElement_Total = document.getElementById("Total");
+        const inputElement_Months = document.getElementById("Months");
+        const inputElement_Current = document.getElementById("Current");
+        
+        const Total = inputElement_Total.value 
+        const Months = inputElement_Months.value
+        const Current =  inputElement_Current.value 
+        const requiredSavings = getTotalSavingsValue(Total,Months,Current) 
+
+        inputElement_pTag.innerText= requiredSavings
+        }
+        inputElement_calBtn.addEventListener("click",handleButtonClick)
+      </script>
+    </main>
+  </body>
+</html>

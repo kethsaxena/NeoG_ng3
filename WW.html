@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Discounts Deducer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="container">
+      <nav>
+        <ul>
+          <li><a href="BB.html">BMI Buddy</a></li>
+          <li><a href="CC.html">Calorie Compass</a></li>
+          <li><a href="WW.html">Water Watcher</a></li>
+          <li><a href="SS.html">Steps Sankhya</a></li>
+        </ul>
+      </nav>
+      <hgroup>
+        <h1>Water Watcher</h1>
+        <p>How much Water did you drink?</p>
+      </hgroup>
+    </header>
+    <main class="container">
+      <div style="display: flex; gap: 30px; align-items: center">
+        <input id="Amt" type="text" placeholder="Enter Total Amount"  style="width: 250px;">
+        <input id="PctDct" type="text" placeholder="Enter Discount Pecentage" style="width: 350px;">
+        <button id="Btn">Submit</button>
+      </div>
+      <section>
+        <p id="result"></p>
+      </section>
+      <script>
+        const btn = document.getElementById("Btn");
+        function getInfoDiscount(){
+          const Amount = document.getElementById("Amt").value;
+          const PctDct = document.getElementById("PctDct").value;
+          const result = document.getElementById("result");
+
+          console.log("Getting Discount for:"+Amount);
+          console.log("Discount Percentage:"+PctDct);
+
+          const discount = Amount*PctDct/100;
+          const finalPrice = Amount*(1-PctDct/100);
+
+          result.innerText = "You Saved: "+discount+" Final Price: "+finalPrice
+        };
+
+        btn.addEventListener("click",getInfoDiscount);
+      </script>
+    </main>
+  </body>
+</html>
